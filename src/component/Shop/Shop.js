@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import useProducts from '../../Hooks/useProducts';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useProducts();
     const [cart, setCart] = useState([]);
-
-    useEffect(() => {
-        fetch('products.json')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
 
     useEffect(() => {
         const storedCart = getStoredCart();
@@ -48,7 +43,7 @@ const Shop = () => {
     }
     return (
         <div className='shop-container'>
-            <div className='products-container'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2'>
                 {
                     products.map(product => <Product key={product.id}
                         product={product} eventHandler={eventHandler}
