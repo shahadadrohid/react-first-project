@@ -43,12 +43,14 @@ const Shop = () => {
     }
     return (
         <div className='shop-container'>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2'>
-                {
-                    products.map(product => <Product key={product.id}
-                        product={product} eventHandler={eventHandler}
-                    ></Product>)
-                }
+            <div className='flex justify-center'>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5'>
+                    {
+                        products.map(product => <Product key={product.id}
+                            product={product} eventHandler={eventHandler}
+                        ></Product>)
+                    }
+                </div>
             </div>
             <div className='cart-container'>
                 <Cart cart={cart}></Cart>

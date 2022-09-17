@@ -17,8 +17,8 @@ const Product = (props) => {
                     <p><small>Ratings: {ratings}</small></p>
                 </div>
             </div>
-            <button onClick={() => props.eventHandler(props.product)} className='button-cart'>
-                <p className='button-text'>Add to Cart</p>
+            <button onClick={() => props.eventHandler(props.product)} className='button-cart py-4 absolute bottom-0 flex items-center justify-center w-full rounded-lg'>
+                <p className='mr-2'>Add to Cart</p>
                 <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
             </button>
         </div>
