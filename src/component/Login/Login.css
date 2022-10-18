@@ -41,7 +41,7 @@
     cursor: pointer;
 }
 
-.form-submit {
+.form-submit:hover {
     background-color: rgba(255, 153, 0, 0.5);
 }
 
