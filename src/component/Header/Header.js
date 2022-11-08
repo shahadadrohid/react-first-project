@@ -4,9 +4,16 @@ import logo from '../../images/Logo.svg';
 import { Link } from 'react-router-dom';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const [user] = useAuthState(auth);
+    const handleSignOut = () => {
+        signOut(auth)
+    }
     return (
         <nav className='header flex items-center justify-between px-8'>
             <img src={logo} alt="" />
@@ -29,9 +36,10 @@ const Header = () => {
                     <li>
                         <Link to="/about">About</Link
                         ></li>
-                    <li>
-                        <Link to="/login">Login</Link
-                        ></li>
+                    {user ?
+                        <button onClick={handleSignOut} className='bg-white rounded-sm border-2'>Sign Out</button>
+                        :
+                        <li><Link to="/login">Login</Link></li>}
                 </ul>
             </div>
         </nav>
